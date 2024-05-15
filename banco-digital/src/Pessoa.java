@@ -1,7 +1,11 @@
 public class Pessoa {
     private String nome;
-    private String idade;
-    private int numeroDocumento;
+    private int idade;
+
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
 
     public String getNome() {
         return nome;
@@ -11,19 +15,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getIdade() {
+    public int getIdade() {
         return idade;
     }
 
-    public void setIdade(String idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
-    }
-
-    public int getNumeroDocumento() {
-        return numeroDocumento;
-    }
-
-    public void setNumeroDocumento(int numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
     }
 }
