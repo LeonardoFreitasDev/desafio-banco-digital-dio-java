@@ -29,10 +29,14 @@ public class Banco {
 
     public Conta buscarConta(){
         Scanner input = new Scanner(System.in);
-        System.out.println("Digite o nome do cliente: ");
+        System.out.print("Digite o nome do cliente: ");
         String nomeCliente = input.nextLine();
+        System.out.print("Digite o número da agência: ");
+        int numeroAgencia = input.nextInt();
+        System.out.print("Digite o número da conta: ");
+        int numeroConta = input.nextInt();
         for(Conta conta : getContas()){
-            if(conta.cliente.getNome().equals(nomeCliente)){
+            if(conta.cliente.getNome().equals(nomeCliente) && (conta.getAgencia() == numeroAgencia) && (conta.getNumero() == numeroConta) ){
                 return conta;
             }
         }

@@ -6,6 +6,5 @@ public class Main {
 
         banco.menuOpcoes();
 
-
     }
 }

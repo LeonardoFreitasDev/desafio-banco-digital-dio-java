@@ -15,6 +15,14 @@ public abstract class Conta implements InterfaceConta {
         this.cliente = cliente;
     }
 
+    public int getAgencia() {
+        return agencia;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
     @Override
     public void depositar(double valor) {
         this.saldo += valor;
