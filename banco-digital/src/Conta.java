@@ -1,4 +1,4 @@
-public abstract class Conta implements InterfaceConta{
+public abstract class Conta implements InterfaceConta {
 
     private static final int AGENCIA_PADRAO = 1;
     private static int SEQUENCIAL = 1;
@@ -22,13 +22,24 @@ public abstract class Conta implements InterfaceConta{
 
     @Override
     public void sacar(double valor) {
-        this.saldo -= valor;
+        if (verificaSaldoDisponivel(valor)) {
+            this.saldo -= valor;
+        }
     }
 
     @Override
     public void transferir(double valor, InterfaceConta contaDestino) {
         sacar(valor);
         contaDestino.depositar(valor);
+    }
+
+    public boolean verificaSaldoDisponivel(double valor) {
+        if (valor > this.saldo) {
+            System.out.println("Você não tem saldo suficiente para esta transação!");
+            System.out.println("Saldo disponível atual: " + this.saldo);
+            return false;
+        }
+        return true;
     }
 
 

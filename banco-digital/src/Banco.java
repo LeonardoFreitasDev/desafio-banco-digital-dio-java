@@ -73,17 +73,45 @@ public class Banco {
     }
 
     public void exibirExtratoCliente(){
-
         Conta contaBuscada = buscarConta();
-        contaBuscada.imprimirExtrato();
+        if(contaBuscada != null) contaBuscada.imprimirExtrato();
+
     }
 
     public void fazerDepositoCliente(){
         Conta contaDeposito = buscarConta();
-        Scanner input = new Scanner(System.in);
-        System.out.println("Digite o valor a ser depositado: ");
-        double valorDeposito = input.nextDouble();
-        contaDeposito.depositar(valorDeposito);
+        if(contaDeposito != null){
+            Scanner input = new Scanner(System.in);
+            System.out.print("Digite o valor a ser depositado: ");
+            double valorDeposito = input.nextDouble();
+            contaDeposito.depositar(valorDeposito);
+        }
+
+    }
+
+    public void fazerSaqueCliente(){
+        Conta contaSaque = buscarConta();
+        if(contaSaque != null){
+            Scanner input = new Scanner(System.in);
+            System.out.print("Digite o valor a ser retirado: ");
+            double valorSaque = input.nextDouble();
+            contaSaque.sacar(valorSaque);
+        }
+
+    }
+
+    public void fazerTransferencia(){
+        System.out.println("--- Conta de Origem ---");
+        Conta contaOrigem = buscarConta();
+        System.out.println("--- Conta de Destino ---");
+        Conta contaDestino = buscarConta();
+
+        if((contaOrigem != null) && (contaDestino != null)){
+            Scanner input = new Scanner(System.in);
+            System.out.print("Digite o valor da transferência: ");
+            double valorTransferencia =  input.nextDouble();
+            contaOrigem.transferir(valorTransferencia, contaDestino);
+        }
     }
 
     public void imprimirListaContas(){
@@ -129,12 +157,21 @@ public class Banco {
                     fazerDepositoCliente();
                     continue;
                 case 5:
+                    fazerSaqueCliente();
+                    continue;
+                case 6:
+                    fazerTransferencia();
+                    continue;
+                case 7:
+                    imprimirListaClientes();
+                    continue;
+                case 8:
+                    imprimirListaContas();
+                    continue;
                 case 0:
                     System.out.println("Programa encerrado.");
-
-
-
-
+                default:
+                    System.out.println("Opção inválida!");
             }
         }while(opcao != 0);
     }
